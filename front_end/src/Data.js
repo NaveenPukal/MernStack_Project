@@ -25,11 +25,23 @@ const Data = {
       description: "high quality pant",
     },
     {
-      name: "Nike Shirt",
-      slug: "nike-slim-shirt",
+      name: "otto Shirt",
+      slug: "otto-slim-shirt",
       category: "shirts",
       image: "/images/p2.jpg", //679 * 829
-      price: 220,
+      price: 180,
+      countInStock: 10,
+      brand: "otto",
+      rating: 4.5,
+      numReviews: 10,
+      description: "high quality shirts",
+    },
+    {
+      name: "Nike T-Shirt",
+      slug: "nike-slim-Tshirt",
+      category: "T-shirts",
+      image: "/images/p4.webp", //679 * 829
+      price: 100,
       countInStock: 10,
       brand: "Nike",
       rating: 4.5,
