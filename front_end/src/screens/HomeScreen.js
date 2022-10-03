@@ -1,7 +1,20 @@
-import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import Axios from "axios";
-
+import Product from "../components/Product";
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "FETCH_REQUEST":
+      return { ...state, loading: true };
+    case "FETCH_SUCCESS":
+      return { ...state, products: action.payload, loading: false };
+    case "FETCH_FAIL":
+      return { ...state, loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
 function HomeScreen() {
   const [products, setProducts] = useState([]);
 
@@ -16,22 +29,13 @@ function HomeScreen() {
       {" "}
       <h1>Feature Products</h1>
       <div className="products">
-        {products.map((product) => (
-          <div key={product.slug} className="product">
-            <Link to={`/product/${product.slug}`}>
-              <img src={product.image} alt={product.name}></img>
-            </Link>
-            <div className="product-info">
-              <Link to={`/product/${product.slug}`}>
-                <p>{product.name}</p>
-              </Link>
-              <p>
-                {" "}
-                <strong>₹{product.price}</strong>
-              </p>
-            </div>
-          </div>
-        ))}
+        <Row>
+          {products.map((product) => (
+            <Col key={product.slug} sm={6} md={4} lg={3} className="mb=3">
+              <Product product={product}></Product>
+            </Col>
+          ))}
+        </Row>
       </div>
     </div>
   );
